@@ -8,6 +8,10 @@ class Category extends Model
 {
     protected $fillable = ['name', 'slug'];
 
+    /**
+     * each category can have many products, so we use hasMany relationship
+     */
+
     public function products()
     {
         return $this->hasMany(Product::class);

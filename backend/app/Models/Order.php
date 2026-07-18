@@ -16,6 +16,7 @@ class Order extends Model
 
     /**
      * Get the products for the order.
+     * each product can be in many orders and each order can have many products, so we use belongsToMany relationship
      */
     public function products()
     {
@@ -24,6 +25,7 @@ class Order extends Model
 
     /**
      * Get the user that owns the order.
+     * each order belongs to one user, so we use belongsTo relationship
      */
     public function user()
     {
@@ -32,6 +34,7 @@ class Order extends Model
 
     /**
      * Get the coupon that owns the order.
+     * each order belongs to one coupon, so we use belongsTo relationship
      */
     public function coupon()
     {
@@ -40,6 +43,7 @@ class Order extends Model
 
     /**
      * Get the route key for the model.
+     * humain readable format for the created_at attribute
      *
      * @return string
      */

@@ -10,6 +10,7 @@ class Brand extends Model
 
     /**
      * Get the products for the brand.
+     * each brand can have many products, so we use hasMany relationship
      */
     public function products()
     {

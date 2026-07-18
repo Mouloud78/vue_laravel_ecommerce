@@ -2,21 +2,21 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
-
-use Illuminate\Database\Eloquent\Attributes\Fillable;
-use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-#[Fillable(['name', 'email', 'password'])]
-#[Hidden(['password', 'remember_token'])]
+
 class User extends Authenticatable
 {
     /** @use HasFactory<UserFactory> */
     use HasFactory, Notifiable;
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
     protected $fillable = [
         'name',
         'email',
@@ -43,15 +43,29 @@ class User extends Authenticatable
         ];
     }
 
+    /**
+     * The attributes that should be hidden for serialization.
+     *
+     * @var array<int, string>
+     */
     protected $hidden = [
         'password',
         'remember_token',
     ];
 
+    /**
+     * Undocumented variable
+     *
+     * @var array
+     */
     protected $appends = [
         'image_path',
     ];
 
+    /**
+     * Get the orders for the user.
+     * each user can have many orders, so we use hasMany relationship
+     */
     public function orders()
     {
         return $this->hasMany(Order::class)
@@ -59,6 +73,10 @@ class User extends Authenticatable
             ->latest();
     }
 
+    /**
+     * Get the reviews for the user.
+     * each user can have many reviews, so we use hasMany relationship
+     */
     public function getImagePathAttribute()
     {
         if ($this->profile_image) {

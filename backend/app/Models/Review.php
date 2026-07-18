@@ -11,6 +11,7 @@ class Review extends Model
 
     /**
      * Get the user that owns the review.
+     * each review belongs to one user, so we use belongsTo relationship
      */
     public function user()
     {
@@ -19,6 +20,7 @@ class Review extends Model
 
     /**
      * Get the product that owns the review.
+     * each review belongs to one product, so we use belongsTo relationship
      */
     public function product()
     {
@@ -27,6 +29,7 @@ class Review extends Model
 
     /**
      * Get the route key for the model.
+     * humain readable format for the created_at attribute
      *
      * @return string
      */
