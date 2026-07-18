@@ -80,6 +80,9 @@ class User extends Authenticatable
     public function getImagePathAttribute()
     {
         if ($this->profile_image) {
+            /**
+             * return full path of the image
+             */
             return asset($this->profile_image);
         } else {
             return "https://pixabay.com/fr/images/download/x-6380868_1920.png";
